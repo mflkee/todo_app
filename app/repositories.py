@@ -1,6 +1,5 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, and_
-from sqlalchemy.orm import selectinload
 from typing import Optional, List
 from uuid import UUID
 from app.models import User, Task, Category, TaskStatus

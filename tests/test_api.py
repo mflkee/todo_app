@@ -5,7 +5,6 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sess
 from sqlalchemy.pool import NullPool
 from app.main import app
 from app.database import Base, get_db
-from app.models import User, Task, Category
 from app.services.auth_service import AuthService
 from app.repositories import UserRepository
 from app.schemas import UserCreate

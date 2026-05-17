@@ -4,7 +4,6 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import OneHotEncoder
 import joblib
 import os
-from uuid import UUID
 from app.models import Task
 
 

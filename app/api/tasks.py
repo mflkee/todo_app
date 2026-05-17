@@ -4,7 +4,7 @@ from uuid import UUID
 from app.dependencies import get_task_service, get_prediction_service, get_current_user
 from app.schemas import (
     TaskCreate, TaskUpdate, TaskResponse, TaskComplete,
-    CategoryCreate, CategoryResponse, TaskFilter
+    CategoryCreate, CategoryResponse
 )
 from app.services.task_service import TaskService
 from app.services.prediction_service import PredictionService
