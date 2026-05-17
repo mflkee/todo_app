@@ -9,8 +9,10 @@ from app.services.auth_service import AuthService
 from app.repositories import UserRepository
 from app.schemas import UserCreate
 
+import os
+
 # Тестовая БД
-TEST_DATABASE_URL = "postgresql+asyncpg://test_user:test_password@test_db:5432/test_db"
+TEST_DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+asyncpg://test_user:test_password@test_db:5432/test_db")
 
 engine = create_async_engine(TEST_DATABASE_URL, echo=True, poolclass=NullPool)
 TestingSessionLocal = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
