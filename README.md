@@ -181,50 +181,7 @@ curl http://localhost:8000/api/v1/tasks/predict/{task_id} \
   -H "Authorization: Bearer <access_token>"
 ```
 
-## TUI
 
-Интерактивный режим с меню и навигацией по цифрам:
-
-```bash
-docker-compose exec -it app python scripts/tui.py
-```
-
-Токен хранится в `/tmp/.todo_cli_token` и удаляется при выходе.
-
-## CLI
-
-Минималистичный CLI для взаимодействия с API через терминал.
-
-```bash
-# Вход / регистрация
-docker-compose exec app python scripts/cli.py register <login> <password> <имя> <фамилия>
-docker-compose exec app python scripts/cli.py login <login> <password>
-
-# Категории
-docker-compose exec app python scripts/cli.py category list
-docker-compose exec app python scripts/cli.py category create <название>
-
-# Задачи
-docker-compose exec app python scripts/cli.py task list [--status] [--category-id] [--priority]
-docker-compose exec app python scripts/cli.py task create <title> [-d description] [-p priority] [--category-id]
-docker-compose exec app python scripts/cli.py task get <task-id>
-docker-compose exec app python scripts/cli.py task update <task-id> [--title] [--description] [--priority]
-docker-compose exec app python scripts/cli.py task complete <task-id> <duration>
-docker-compose exec app python scripts/cli.py task delete <task-id>
-docker-compose exec app python scripts/cli.py task predict <task-id>
-
-# Выход
-docker-compose exec app python scripts/cli.py logout
-```
-
-Токен сохраняется в `~/.todo_cli/config.json`.
-
-## Демо-скрипт предсказаний
-
-```bash
-# Регистрирует 3 пользователей, создаёт задачи, обучает модель и выводит прогнозы
-docker-compose exec app python scripts/demo_predictions.py
-```
 
 ## Тестирование
 
