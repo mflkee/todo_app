@@ -46,6 +46,10 @@ class CategoryRepository:
         )
         return result.scalars().all()
 
+    async def delete(self, category: Category):
+        await self.session.delete(category)
+        await self.session.commit()
+
 
 class TaskRepository:
     def __init__(self, session: AsyncSession):
@@ -98,6 +102,12 @@ class TaskRepository:
 
     async def delete(self, task: Task):
         await self.session.delete(task)
+        await self.session.commit()
+
+    async def unset_category(self, category_id: int):
+        from sqlalchemy import update
+        stmt = update(Task).where(Task.category_id == category_id).values(category_id=None)
+        await self.session.execute(stmt)
         await self.session.commit()
 
     async def get_completed_by_user(self, user_id: UUID) -> List[Task]:

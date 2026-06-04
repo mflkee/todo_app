@@ -29,6 +29,17 @@ async def create_category(
     )
 
 
+@router.delete("/categories/{category_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_category(
+    category_id: int,
+    current_user: UserResponse = Depends(get_current_user),
+    task_service: TaskService = Depends(get_task_service)
+):
+    success = await task_service.delete_category(UUID(current_user.id), category_id)
+    if not success:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Category not found")
+
+
 @router.get("/categories", response_model=List[CategoryResponse])
 async def get_categories(
     current_user: UserResponse = Depends(get_current_user),

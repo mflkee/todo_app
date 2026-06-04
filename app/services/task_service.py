@@ -83,5 +83,13 @@ class TaskService:
         category = Category(name=name, user_id=user_id)
         return await self.category_repo.create(category)
 
+    async def delete_category(self, user_id: UUID, category_id: int) -> bool:
+        category = await self.category_repo.get_by_id(category_id)
+        if not category or category.user_id != user_id:
+            return False
+        await self.task_repo.unset_category(category_id)
+        await self.category_repo.delete(category)
+        return True
+
     async def get_categories(self, user_id: UUID) -> List[Category]:
         return await self.category_repo.get_by_user(user_id)
