@@ -4,3 +4,6 @@ __pycache__/
 .venv
 ml_models/
 alembic/versions/*.pyc
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local

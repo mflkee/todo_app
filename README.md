@@ -1,10 +1,12 @@
-# To-Do App API
+# To-Do App
 
-Бэкенд приложения для управления задачами (To-Do App) на FastAPI с прогнозированием времени выполнения задач на основе машинного обучения.
+Fullstack-приложение для управления задачами (To-Do App) с прогнозированием времени выполнения на основе машинного обучения.
 
 ## Описание проекта
 
 Приложение позволяет пользователям создавать, редактировать и удалять задачи, сортировать их по категориям или статусу, а также получать прогноз времени выполнения на основе истории.
+
+**Стек:** FastAPI (бэкенд) + React / TypeScript (фронтенд) + PostgreSQL + Docker + Nginx.
 
 ## Функционал
 
@@ -40,6 +42,11 @@
 | scikit-learn | Машинное обучение (Random Forest) |
 | Docker & Docker Compose | Контейнеризация и оркестрация |
 | Uvicorn | ASGI-сервер |
+| React 19 | Библиотека UI |
+| TypeScript | Типизация фронтенда |
+| Vite | Сборка фронтенда |
+| React Router | Маршрутизация |
+| Nginx | Раздача статики и проксирование |
 
 ## Быстрый старт
 
@@ -61,9 +68,11 @@ docker-compose up -d
 docker-compose exec app alembic upgrade head
 ```
 
-Приложение будет доступно по адресу: **http://localhost:8000**
+**Фронтенд:** http://localhost
 
-Документация API (Swagger UI): **http://localhost:8000/docs**
+**API (Swagger UI):** http://localhost/api/docs
+
+**API Health:** http://localhost/health
 
 ### Остановка
 
@@ -213,6 +222,19 @@ docker-compose exec app pytest tests/ -v
 docker-compose exec app pytest tests/ --cov=app --cov-report=html
 ```
 
+### Фронтенд (React Testing Library + Vitest)
+
+```bash
+cd frontend
+npm test
+```
+
+Тесты покрывают:
+- Авторизацию (логин, логаут, состояние)
+- Валидацию форм (регистрация, создание задачи)
+- Бизнес-логику (фильтрация, приоритеты)
+- Граничные условия (пустые поля, несовпадение паролей)
+
 ## Модель данных
 
 ### Таблицы
@@ -276,12 +298,24 @@ todo_app/
 │   ├── database.py           # Настройка БД
 │   ├── config.py             # Конфигурация
 │   └── main.py               # Точка входа
+├── frontend/                 # Фронтенд React
+│   ├── src/
+│   │   ├── components/       # UI-компоненты
+│   │   ├── context/          # React Context
+│   │   ├── pages/            # Страницы
+│   │   ├── test/             # Тесты
+│   │   ├── api.ts            # API клиент
+│   │   ├── types.ts          # TypeScript типы
+│   │   └── App.tsx           # Корневой компонент
+│   ├── Dockerfile            # Docker образ фронтенда
+│   ├── nginx.conf            # Конфиг Nginx
+│   └── package.json          # Зависимости
 ├── scripts/                  # Утилиты
 │   └── demo_predictions.py
-├── tests/                    # Тесты
+├── tests/                    # Тесты бэкенда
 │   └── test_api.py
 ├── docker-compose.yml        # Docker Compose конфиг
-├── Dockerfile                # Docker образ
+├── Dockerfile                # Docker образ бэкенда
 ├── requirements.txt          # Python-зависимости
 ├── alembic.ini               # Настройки Alembic
 └── README.md                 # Документация
