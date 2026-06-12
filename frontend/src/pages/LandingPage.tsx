@@ -52,7 +52,6 @@ export const LandingPage: React.FC = () => {
   return (
     <div className="landing-page">
       <section className="hero">
-        <div className="hero-glow"></div>
         <div className="hero-content">
           <div className="hero-badge">
             <span className="badge-dot"></span>
@@ -61,7 +60,7 @@ export const LandingPage: React.FC = () => {
           <h1 className="hero-title">
             TaskFlow — умный помощник
             <br />
-            <span className="gradient-text">для ваших задач</span>
+            <span className="accent-text">для ваших задач</span>
           </h1>
           <p className="hero-subtitle">
             Создавайте задачи, управляйте временем и получайте прогнозы выполнения

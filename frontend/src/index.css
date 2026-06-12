@@ -1,33 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #12121a;
-  --bg-tertiary: #1a1a2e;
-  --bg-card: #16162a;
-  --bg-hover: #1e1e3a;
+  --bg-primary: #0c0c0e;
+  --bg-secondary: #161618;
+  --bg-tertiary: #1e1e21;
+  --bg-card: #161618;
+  --bg-hover: #252528;
   
-  --text-primary: #f0f0f5;
-  --text-secondary: #a0a0b0;
-  --text-muted: #6b6b7b;
+  --text-primary: #e8e8ed;
+  --text-secondary: #9c9ca6;
+  --text-muted: #666670;
   
   --accent-primary: #6366f1;
-  --accent-secondary: #8b5cf6;
-  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
   
   --success: #22c55e;
   --warning: #f59e0b;
   --danger: #ef4444;
   
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.15);
+  --border: #26262b;
+  --border-hover: #35353a;
   
-  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 48px rgba(0, 0, 0, 0.5);
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 24px rgba(0, 0, 0, 0.4);
   
-  --radius: 12px;
-  --radius-lg: 16px;
-  --radius-sm: 8px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-sm: 6px;
 }
 
 * {
@@ -77,14 +75,12 @@ input, textarea, select {
 }
 
 .btn-primary {
-  background: var(--accent-gradient);
+  background: var(--accent-primary);
   color: white;
-  box-shadow: 0 2px 16px rgba(99, 102, 241, 0.3);
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.4);
+  background: #5558e6;
 }
 
 .btn-secondary {
@@ -170,8 +166,7 @@ input, textarea, select {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(10, 10, 15, 0.8);
-  backdrop-filter: blur(20px);
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border);
 }
 
@@ -218,8 +213,12 @@ input, textarea, select {
   border-radius: var(--radius-sm);
   font-size: 14px;
   font-weight: 500;
-  background: var(--accent-gradient);
+  background: var(--accent-primary);
   color: white;
+}
+
+.nav-button:hover {
+  background: #5558e6;
 }
 
 /* ===== MAIN CONTENT ===== */
@@ -241,17 +240,6 @@ input, textarea, select {
   justify-content: center;
   padding: 80px 24px;
   overflow: hidden;
-}
-
-.hero-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .hero-content {
@@ -295,11 +283,8 @@ input, textarea, select {
   letter-spacing: -0.02em;
 }
 
-.gradient-text {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.accent-text {
+  color: var(--accent-primary);
 }
 
 .hero-subtitle {
@@ -373,7 +358,7 @@ input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent-gradient);
+  background: var(--accent-primary);
   border-radius: var(--radius);
   color: white;
   margin-bottom: 20px;
@@ -409,10 +394,7 @@ input, textarea, select {
 .step-num {
   font-size: 48px;
   font-weight: 800;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent-primary);
   margin-bottom: 16px;
 }
 
@@ -449,7 +431,7 @@ input, textarea, select {
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--accent-gradient);
+  background: var(--accent-primary);
 }
 
 .cta-title {
@@ -905,10 +887,7 @@ input, textarea, select {
 .prediction-value {
   font-size: 48px;
   font-weight: 800;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent-primary);
 }
 
 .prediction-result p {
@@ -989,8 +968,7 @@ input, textarea, select {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
