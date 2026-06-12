@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Optional
 from pydantic import BaseModel, ConfigDict, field_validator
 
@@ -63,6 +63,13 @@ class TaskBase(BaseModel):
     def priority_range(cls, v: int) -> int:
         if v < 1 or v > 5:
             raise ValueError('Priority must be between 1 and 5')
+        return v
+
+    @field_validator('due_date')
+    @classmethod
+    def strip_timezone(cls, v: Optional[datetime]) -> Optional[datetime]:
+        if v is not None and v.tzinfo is not None:
+            return v.astimezone(timezone.utc).replace(tzinfo=None)
         return v
 
 
